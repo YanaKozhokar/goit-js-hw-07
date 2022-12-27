@@ -1,6 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 
 const galleryRef = document.querySelector(".gallery");
+let largeItemUrl;
 
 function createGalleryMarkup(array) {
   return array
@@ -22,3 +23,8 @@ function createGalleryMarkup(array) {
 
 const galleryMarkup = createGalleryMarkup(galleryItems);
 galleryRef.insertAdjacentHTML("beforeend", galleryMarkup);
+
+galleryRef.addEventListener("click", (event) => {
+  event.preventDefault();
+  largeItemUrl = event.target.dataset.source;
+});
