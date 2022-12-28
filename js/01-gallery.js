@@ -1,7 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
 
 const galleryRef = document.querySelector(".gallery");
-let largeItemUrl;
 
 function createGalleryMarkup(array) {
   return array
@@ -26,5 +25,9 @@ galleryRef.insertAdjacentHTML("beforeend", galleryMarkup);
 
 galleryRef.addEventListener("click", (event) => {
   event.preventDefault();
-  largeItemUrl = event.target.dataset.source;
+  const largeItemUrl = event.target.dataset.source;
+  const instance = basicLightbox.create(`
+    <img src="${largeItemUrl}" width="800" height="600">
+`);
+  instance.show();
 });
