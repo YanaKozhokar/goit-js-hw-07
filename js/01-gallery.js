@@ -25,9 +25,12 @@ galleryRef.insertAdjacentHTML("beforeend", galleryMarkup);
 
 galleryRef.addEventListener("click", (event) => {
   event.preventDefault();
+  if (!event.target.classList.contains("gallery__image")) {
+    return;
+  }
   const largeItemUrl = event.target.dataset.source;
   const instance = basicLightbox.create(`
-    <img src="${largeItemUrl}" width="800" height="600">
-`);
+      <img src="${largeItemUrl}" width="800" height="600">
+  `);
   instance.show();
 });
